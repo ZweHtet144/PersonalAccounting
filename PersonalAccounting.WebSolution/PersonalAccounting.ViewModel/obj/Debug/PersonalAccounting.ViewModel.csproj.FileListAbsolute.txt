@@ -1,0 +1,6 @@
+D:\VStudio\Advanced\PersonalAccounting.WebSolution\PersonalAccounting.ViewModel\bin\Debug\PersonalAccounting.ViewModel.dll
+D:\VStudio\Advanced\PersonalAccounting.WebSolution\PersonalAccounting.ViewModel\bin\Debug\PersonalAccounting.ViewModel.pdb
+D:\VStudio\Advanced\PersonalAccounting.WebSolution\PersonalAccounting.ViewModel\obj\Debug\PersonalAccounting.ViewModel.dll
+D:\VStudio\Advanced\PersonalAccounting.WebSolution\PersonalAccounting.ViewModel\obj\Debug\PersonalAccounting.ViewModel.pdb
+D:\VStudio\Advanced\PersonalAccounting.WebSolution\PersonalAccounting.ViewModel\obj\Debug\PersonalAccounting.ViewModel.csprojAssemblyReference.cache
+D:\VStudio\Advanced\PersonalAccounting.WebSolution\PersonalAccounting.ViewModel\obj\Debug\PersonalAccounting.ViewModel.csproj.CoreCompileInputs.cache

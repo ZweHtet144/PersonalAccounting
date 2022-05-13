@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AccountingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="Boolean" />
+    <Property Name="isDelete" Type="Boolean" />
+    <NavigationProperty Name="Expenses" Relationship="Self.FK_Expense_Category" FromRole="Category" ToRole="Expense" />
+    <NavigationProperty Name="Incomes" Relationship="Self.FK_Income_Category" FromRole="Category" ToRole="Income" />
+  </EntityType>
+  <EntityType Name="Expense">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="Amt" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="CategoryId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="isDelete" Type="Boolean" />
+    <Property Name="IncomeId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Category" Relationship="Self.FK_Expense_Category" FromRole="Expense" ToRole="Category" />
+    <NavigationProperty Name="Incomes" Relationship="Self.FK_Income_Expense" FromRole="Expense" ToRole="Income" />
+  </EntityType>
+  <EntityType Name="Income">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="Amt" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="CategoryId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="isDelete" Type="Boolean" />
+    <Property Name="ExpenseId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Category" Relationship="Self.FK_Income_Category" FromRole="Income" ToRole="Category" />
+    <NavigationProperty Name="Expense" Relationship="Self.FK_Income_Expense" FromRole="Income" ToRole="Expense" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Expense_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Expense" Type="Self.Expense" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Expense">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Income_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Income" Type="Self.Income" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Income">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Income_Expense">
+    <End Role="Expense" Type="Self.Expense" Multiplicity="0..1" />
+    <End Role="Income" Type="Self.Income" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Expense">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Income">
+        <PropertyRef Name="ExpenseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AccountingEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="Expenses" EntityType="Self.Expense" />
+    <EntitySet Name="Incomes" EntityType="Self.Income" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK_Expense_Category" Association="Self.FK_Expense_Category">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Expense" EntitySet="Expenses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Income_Category" Association="Self.FK_Income_Category">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Income" EntitySet="Incomes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Income_Expense" Association="Self.FK_Income_Expense">
+      <End Role="Expense" EntitySet="Expenses" />
+      <End Role="Income" EntitySet="Incomes" />
+    </AssociationSet>
+    <FunctionImport Name="GetExpenseRecords" ReturnType="Collection(AccountingModel.GetExpenseRecords_Result)">
+      <Parameter Name="start" Mode="In" Type="DateTime" />
+      <Parameter Name="end" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="GetIncomeRecords" ReturnType="Collection(AccountingModel.GetIncomeRecords_Result)">
+      <Parameter Name="start" Mode="In" Type="DateTime" />
+      <Parameter Name="end" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="NetProfit" ReturnType="Collection(AccountingModel.NetProfit_Result)" />
+    <FunctionImport Name="Profit" ReturnType="Collection(AccountingModel.Profit_Result)" />
+    <FunctionImport Name="selectcategory" ReturnType="Collection(AccountingModel.selectcategory_Result)" />
+  </EntityContainer>
+  <ComplexType Name="GetExpenseRecords_Result">
+    <Property Type="String" Name="Id" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="Date" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="Amt" Nullable="true" Precision="19" />
+    <Property Type="String" Name="CategoryId" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="isDelete" Nullable="true" />
+    <Property Type="String" Name="IncomeId" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="GetIncomeRecords_Result">
+    <Property Type="String" Name="Id" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="Date" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="Amt" Nullable="true" Precision="19" />
+    <Property Type="String" Name="CategoryId" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="isDelete" Nullable="true" />
+    <Property Type="String" Name="ExpenseId" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="NetProfit_Result">
+    <Property Type="Decimal" Name="totalincome" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="totalexpense" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="Net" Nullable="true" Precision="19" />
+    <Property Type="String" Name="TotalDate" Nullable="true" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="Profit_Result">
+    <Property Type="Decimal" Name="TotalIncome" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="TotalExpense" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="Total" Nullable="true" Precision="19" />
+    <Property Type="String" Name="Column1" Nullable="true" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="selectcategory_Result">
+    <Property Type="String" Name="Id" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="100" />
+    <Property Type="Boolean" Name="Type" Nullable="true" />
+    <Property Type="Boolean" Name="isDelete" Nullable="true" />
+  </ComplexType>
+</Schema>

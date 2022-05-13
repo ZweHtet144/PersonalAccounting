@@ -1,0 +1,63 @@
+﻿@model IEnumerable<PersonalAccounting.ViewModel.IncomeViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLTELayout.cshtml";
+}
+@using (Html.BeginForm("GetIncomeRecords", "Income", FormMethod.Post))
+{
+    <div class="form-group">
+        <div class="col-lg-4">
+            <span>Start Date:</span><input type="date" name="start" class="form-control" />
+        </div>
+
+        <div class="col-lg-4">
+            <span>End Date:</span><input type="date" name="end" class="form-control" />
+        </div>
+
+        <div class="col-lg-4"><br />
+            <input type="submit" value="Get Record Between Dates" class="btn btn-bitbucket"/>
+        </div>
+    </div>
+
+    <div class="col-lg-4"><br /> 
+        <h5>@Html.ActionLink("Create New", "Create")</h5>
+    </div>
+}
+
+            <table class="table table-bordered table-responsive">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Date)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Amt)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.CategoryName)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr class="bg-light-blue-gradient">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Amt)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CategoryName)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-default" }) |
+
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                }
+            </table>

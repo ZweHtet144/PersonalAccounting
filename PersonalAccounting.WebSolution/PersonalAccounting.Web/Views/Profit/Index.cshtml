@@ -1,0 +1,121 @@
+﻿@model IEnumerable<PersonalAccounting.ViewModel.ProfitViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLTELayout.cshtml";
+}
+<link href="~/Content/pie.css" rel="stylesheet" />
+<style>
+    #chart {
+        padding: 0;
+        max-width: 380px;
+        margin: 35px auto;
+    }
+</style>
+
+<h2>Profit List</h2>
+
+<table class="table table-bordered table-striped table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalIncome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalExpense)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Net)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+      
+    </tr>
+
+@for (int i = 0; i < Model.Count(); i++)
+{
+    var item = Model.ToList()[i];
+    <tr>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.TotalIncome)*@
+            @Html.Raw(item.TotalIncome.ToString())
+        </td>
+
+        <td>
+            @Html.Raw(item.TotalExpense.ToString())
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.Net)*@
+            @Html.Raw(item.Net.ToString())
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+      
+    </tr>
+}
+</table>
+<h3 class="text-center">Balance Chart for All Days</h3>
+<script>
+      window.Promise ||
+        document.write(
+          '<script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"><\/script>'
+        )
+      window.Promise ||
+        document.write(
+          '<script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20171210/classList.min.js"><\/script>'
+        )
+      window.Promise ||
+        document.write(
+          '<script src="https://cdn.jsdelivr.net/npm/findindex_polyfill_mdn"><\/script>'
+        )
+    </script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    
+
+    <script>
+      // Replace Math.random() with a pseudo-random number generator to get reproducible results in e2e tests
+      // Based on https://gist.github.com/blixt/f17b47c62508be59987b
+      var _seed = 42
+      Math.random = function() {
+        _seed = (_seed * 16807) % 2147483647
+        return (_seed - 1) / 2147483646
+      }
+    </script>
+
+     <div id="chart"></div>
+
+    <script>
+        var incomes=@Html.Raw(Json.Encode(Model.Sum(x => x.TotalIncome)));
+        var expense=@Html.Raw(Json.Encode(Model.Sum(y => y.TotalExpense)));
+        var NetBalance=@Html.Raw(Json.Encode(Model.Sum(z => z.Net)));
+        var options = {
+            series: [incomes,expense,NetBalance],
+          chart: {
+          width: 380,
+          type: 'pie',
+        },
+        labels: ['TotalIncome','TotalExpense','Net Balance'],
+        responsive: [{
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200
+            },
+            legend: {
+              position: 'bottom'
+            }
+          }
+        }]
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+      
+      
+    </script>
+
+
+

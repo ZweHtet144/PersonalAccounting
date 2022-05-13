@@ -1,0 +1,12 @@
+D:\VStudio\Advanced\PersonalAccounting.WebSolution\PersonalAccounting.Data\bin\Debug\PersonalAccounting.Data.dll.config
+D:\VStudio\Advanced\PersonalAccounting.WebSolution\PersonalAccounting.Data\bin\Debug\PersonalAccounting.Data.dll
+D:\VStudio\Advanced\PersonalAccounting.WebSolution\PersonalAccounting.Data\bin\Debug\PersonalAccounting.Data.pdb
+D:\VStudio\Advanced\PersonalAccounting.WebSolution\PersonalAccounting.Data\bin\Debug\EntityFramework.dll
+D:\VStudio\Advanced\PersonalAccounting.WebSolution\PersonalAccounting.Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\VStudio\Advanced\PersonalAccounting.WebSolution\PersonalAccounting.Data\bin\Debug\EntityFramework.xml
+D:\VStudio\Advanced\PersonalAccounting.WebSolution\PersonalAccounting.Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\VStudio\Advanced\PersonalAccounting.WebSolution\PersonalAccounting.Data\obj\Debug\PersonalAccounting.Data.dll
+D:\VStudio\Advanced\PersonalAccounting.WebSolution\PersonalAccounting.Data\obj\Debug\PersonalAccounting.Data.pdb
+D:\VStudio\Advanced\PersonalAccounting.WebSolution\PersonalAccounting.Data\obj\Debug\PersonalAccounting.Data.csprojAssemblyReference.cache
+D:\VStudio\Advanced\PersonalAccounting.WebSolution\PersonalAccounting.Data\obj\Debug\PersonalAccounting.Data.csproj.CoreCompileInputs.cache
+D:\VStudio\Advanced\PersonalAccounting.WebSolution\PersonalAccounting.Data\obj\Debug\PersonalAccounting.Data.csproj.CopyComplete

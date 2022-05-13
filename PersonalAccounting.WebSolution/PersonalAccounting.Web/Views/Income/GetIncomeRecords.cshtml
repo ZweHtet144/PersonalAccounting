@@ -1,0 +1,70 @@
+﻿@model IEnumerable<PersonalAccounting.ViewModel.IncomeViewModel>
+
+@{
+    ViewBag.Title = "GetIncomeRecords";
+    Layout = "~/Views/Shared/_AdminLTELayout.cshtml";
+
+}
+
+<h2>GetIncomeRecords</h2>
+
+<p>
+    @Html.ActionLink("Show All Income", "Index")
+
+</p>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="myheader">
+                @Html.DisplayNameFor(model => model.Date)
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="myheader">
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="myheader">
+                @Html.DisplayNameFor(model => model.Amt)
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        @for (int i = 0; i < Model.Count(); i++)
+        {
+            var item = Model.ToList()[i];
+            <div class="col-lg-4">
+                <div class="mystyle">
+                    @Html.DisplayFor(modelItem => item.Date)
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="mystyle">
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="mystyle">
+                    @Html.Raw(item.Amt.ToString())
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+<div class=" col-lg-offset-8 col-lg-8">
+    <div class="total">
+        Total Amount
+        @Html.Raw(Model.Sum(x => x.Amt).Value.ToString("n0"))
+    </div>
+</div>
+
+
+

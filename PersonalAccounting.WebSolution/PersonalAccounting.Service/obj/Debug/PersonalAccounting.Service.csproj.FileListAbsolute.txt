@@ -1,0 +1,17 @@
+D:\VStudio\Advanced\PersonalAccounting.WebSolution\PersonalAccounting.Service\bin\Debug\PersonalAccounting.Service.dll.config
+D:\VStudio\Advanced\PersonalAccounting.WebSolution\PersonalAccounting.Service\bin\Debug\PersonalAccounting.Service.dll
+D:\VStudio\Advanced\PersonalAccounting.WebSolution\PersonalAccounting.Service\bin\Debug\PersonalAccounting.Service.pdb
+D:\VStudio\Advanced\PersonalAccounting.WebSolution\PersonalAccounting.Service\bin\Debug\EntityFramework.dll
+D:\VStudio\Advanced\PersonalAccounting.WebSolution\PersonalAccounting.Service\bin\Debug\EntityFramework.SqlServer.dll
+D:\VStudio\Advanced\PersonalAccounting.WebSolution\PersonalAccounting.Service\bin\Debug\PersonalAccounting.Data.dll
+D:\VStudio\Advanced\PersonalAccounting.WebSolution\PersonalAccounting.Service\bin\Debug\PersonalAccounting.ViewModel.dll
+D:\VStudio\Advanced\PersonalAccounting.WebSolution\PersonalAccounting.Service\bin\Debug\PersonalAccounting.Data.pdb
+D:\VStudio\Advanced\PersonalAccounting.WebSolution\PersonalAccounting.Service\bin\Debug\PersonalAccounting.ViewModel.pdb
+D:\VStudio\Advanced\PersonalAccounting.WebSolution\PersonalAccounting.Service\bin\Debug\EntityFramework.xml
+D:\VStudio\Advanced\PersonalAccounting.WebSolution\PersonalAccounting.Service\bin\Debug\EntityFramework.SqlServer.xml
+D:\VStudio\Advanced\PersonalAccounting.WebSolution\PersonalAccounting.Service\obj\Debug\PersonalAccounting.Service.dll
+D:\VStudio\Advanced\PersonalAccounting.WebSolution\PersonalAccounting.Service\obj\Debug\PersonalAccounting.Service.pdb
+D:\VStudio\Advanced\PersonalAccounting.WebSolution\PersonalAccounting.Service\bin\Debug\PersonalAccounting.Data.dll.config
+D:\VStudio\Advanced\PersonalAccounting.WebSolution\PersonalAccounting.Service\obj\Debug\PersonalAccounting.Service.csprojAssemblyReference.cache
+D:\VStudio\Advanced\PersonalAccounting.WebSolution\PersonalAccounting.Service\obj\Debug\PersonalAccounting.Service.csproj.CoreCompileInputs.cache
+D:\VStudio\Advanced\PersonalAccounting.WebSolution\PersonalAccounting.Service\obj\Debug\PersonalAccounting.Service.csproj.CopyComplete
